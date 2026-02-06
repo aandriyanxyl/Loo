@@ -1,0 +1,132 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loo Splash Screen</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            background-color: #A78BFA; /* Warna ungu sesuai gambar */
+        }
+
+        /* Container Splash Screen */
+        .splash-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            color: white;
+        }
+
+        /* Elemen Lingkaran Putih di Pojok Bawah */
+        .circle-accent {
+            position: absolute;
+            bottom: -150px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background-color: white;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Maskot/Logo Loo */
+        .logo-wrapper {
+            z-index: 2;
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .mascot {
+            width: 100px;
+            height: 130px;
+            background-color: white;
+            border-radius: 50px 50px 20px 20px;
+            position: relative;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Mata dan Senyum Maskot */
+        .mascot::before {
+            content: '• •';
+            position: absolute;
+            top: 40px;
+            color: #A78BFA;
+            font-size: 30px;
+            letter-spacing: 5px;
+        }
+
+        .mascot::after {
+            content: '';
+            position: absolute;
+            top: 65px;
+            width: 20px;
+            height: 10px;
+            border: 3px solid #A78BFA;
+            border-top: 0;
+            border-radius: 0 0 15px 15px;
+        }
+
+        /* Nama Aplikasi */
+        .app-name {
+            font-size: 3rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        /* Animasi Sederhana */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Menghilangkan Splash Screen (Simulasi) */
+        .fade-out {
+            animation: fadeOut 0.5s forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="splash-container" id="splash">
+        <div class="logo-wrapper">
+            <div class="mascot"></div>
+            <h1 class="app-name">Loo</h1>
+        </div>
+
+        <div class="circle-accent"></div>
+    </div>
+
+    <script>
+        // Menghilangkan splash screen setelah 3 detik
+        setTimeout(() => {
+            const splash = document.getElementById('splash');
+            splash.classList.add('fade-out');
+        }, 3000);
+    </script>
+
+</body>
+</html>
